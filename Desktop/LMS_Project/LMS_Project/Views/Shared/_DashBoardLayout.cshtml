@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Lean_SMM</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" /> 
+
+
+
+    @*    <link rel="stylesheet" href="~/css/bootswatch.css" />
+    *@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Lean_SMM.styles.css" asp-append-version="true" /> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+
+
+    <!-- Include Twitter Bootstrap and jQuery: -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+    <!-- Include the plugin's CSS and JS: -->
+    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary  box-shadow mb-3">
+            <div class="container">
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Media" asp-action="Index">Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Index">Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Schedule" asp-action="Index">Schedule</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Settings" asp-action="Index">Setting</a>
+                        </li>
+
+                       
+                    </ul> 
+
+                        <div class="dropdown justify-content-end">
+                          <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Option
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu">
+                            <li class="nav-item">
+                                    <a class="nav-link text-primary" asp-area="" asp-controller="Home" asp-action="LogOut">Logout</a>
+                                </li>
+                          </ul>
+                        </div>
+
+
+
+                       @* <div class="navbar-collapse collapse justify-content-end">
+                       
+                            <ul class="navbar-nav ">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="LogOut">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+*@
+
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_Notification" />
+            @RenderBody()
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - LMS_Project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

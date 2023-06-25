@@ -1,0 +1,61 @@
+﻿@using LMS_Project.ViewModel;
+@model List<AccountDTO>
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+
+
+@{
+  
+    int i = 1;
+    if (@ViewBag.CurrentPage != 1)
+    {
+        i = 1;
+
+    }
+}
+
+@foreach (var user in Model)
+{
+    ViewBag.counter = i++;
+
+    //var id = Encode.EnryptString(user.EmailAddress.ToString());
+    <tr>
+
+
+        <td class="text-truncate">@ViewBag.counter</td>
+      
+        <td class="text-truncate">@user.Name</td>
+       @* <td class="text-truncate">@user.ScheduledTime.ToString("dd MMMM yyyy")</td>*@
+        @*<td class="text-truncate">N/A</td>*@
+        <td></td>
+
+       @* <td class="mx-auto">
+            <a asp-route-Id="@user.PlatformId" asp-action="Edit" asp-controller="Account" asp-area="" class="btn view font-weight-bold">Edit</a>
+        </td>*@
+        <td class="mx-auto">
+            <a asp-route-Id="@user.PlatformId" asp-action="delete" asp-controller="Account" data-toggle="modal" data-target="#mymodal@(user.PlatformId)" class="font-weight-bold text-danger  pl-2"><i class="fas fa-trash"></i>Delete</a>
+        </td>
+
+        <div class="modal fade" id="mymodal@(user.PlatformName)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Delete User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body  font-weight-bold">
+                        Are you sure?
+                        <br />
+                        Do you really want to delete these records? This process cannot be undone.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </tr>
+}

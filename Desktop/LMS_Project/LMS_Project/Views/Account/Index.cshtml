@@ -1,0 +1,59 @@
+﻿@using LMS_Project.ViewModel;
+@model List<AccountDTO>
+@{
+    ViewData["Title"] = "Index"; 
+    Layout = "_DashBoardLayout";
+}
+
+<div class="container" p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Account
+            </h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Account"  asp-action="Create" class="btn btn-primary">
+                Create New Account
+            </a>
+
+        </div>
+        <br />
+
+        <br /> 
+        @if (Model != null)
+        {
+            <div class="table-responsive" style="color: #828282;">
+
+                <table id="user-table" class="table  table-striped table-hover bg-light">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                           @* <th>Platform Name</th>*@
+                            <th></th>
+                           @* <th></th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <partial name="_Table_Media_Card" />
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+
+            <div class="text-center head-size pt-5">
+                No  User
+            </div>
+        }
+    </div>
+
+
+</div>
+
