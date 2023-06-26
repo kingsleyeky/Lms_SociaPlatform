@@ -60,7 +60,7 @@ namespace LMS_Project.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int? Id)
         {
             return View();
         }

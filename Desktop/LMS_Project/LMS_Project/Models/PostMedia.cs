@@ -12,6 +12,9 @@ namespace LMS_Project.Models
         [Required]
         public string? Content { get; set; } 
 
+        [Required]
+        public string? Title { get; set; }
+
         public List<PostPlatform>? PostPlatforms { get; set; }
 
         [Required]
@@ -21,9 +24,6 @@ namespace LMS_Project.Models
 
         [Required]
         public DateTime? ScheduledTime { get; set; }
-       // [Required]
-        public DateTime StartDate { get; set; }
-       // [Required]
-        public DateTime EndDate { get; set; } 
+       
     }
 }

@@ -18,21 +18,21 @@
 @foreach (var user in Model)
 {
     ViewBag.counter = i++;
-
-    //var id = Encode.EnryptString(user.EmailAddress.ToString());
     <tr>
 
-
+        
         <td class="text-truncate">@ViewBag.counter</td>
       @*  <td class="text-truncate"> @string.Join(",",user.PostPlatforms.Select(x=>x.Platform.Name))</td>*@
-        <td class="text-truncate"> @string.Join(",",user.PostPlatforms.Select(x=>x.Platform.Name))</td>
-        @* <td class="text-truncate">@user.ScheduledTime.ToString("dd MMMM yyyy")</td>*@
+        @*<td class="text-truncate"> @string.Join(",",user.PostPlatforms.Select(x=>x.Platform.Name))</td>*@
+
+        <td>
+            <a href="/Media/Edit/@user.Id" class="text-decoration-none">
+                @string.Join(",",user.PostPlatforms.Select(x=>x.Platform.Name))<p class="text-center card-text text-success"></p>
+        </a>  
+        </td>
   
         <td></td>
-
-      @*  <td class="mx-auto">
-            <a asp-route-Id="@user.Id" asp-action="Edit" asp-controller="Media" asp-area="" class="btn view font-weight-bold">Edit</a>
-        </td>*@
+    
         <td class="mx-auto">
             <a asp-route-Id="@user.Id" asp-action="Delete" asp-controller="Media" data-toggle="modal" data-target="#mymodal@(user.Id)" class="font-weight-bold text-danger  pl-2"><i class="fas fa-trash"></i>Delete</a>
         </td>

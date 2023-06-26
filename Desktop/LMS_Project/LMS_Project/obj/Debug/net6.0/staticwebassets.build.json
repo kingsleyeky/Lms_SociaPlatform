@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uCNVxc+XVkJJ4HK3PoIsmX7ZrLTxJ1t+IMAp9/IGBnc=",
+  "Hash": "kIoHNGlR/XGhYCpSIyqyOzhY5wBUPuasi+5Sdwfg+JA=",
   "Source": "LMS_Project",
   "BasePath": "_content/LMS_Project",
   "Mode": "Default",
@@ -389,6 +389,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\_37914interview.JPG"
+    },
+    {
+      "Identity": "C:\\Users\\ENG.KINGSLEY\\Desktop\\LMS_Project\\LMS_Project\\wwwroot\\Images\\_38489WhatsApp Image 2023-06-18 at 12.53.38 PM.jpeg",
+      "SourceId": "LMS_Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ENG.KINGSLEY\\Desktop\\LMS_Project\\LMS_Project\\wwwroot\\",
+      "BasePath": "_content/LMS_Project",
+      "RelativePath": "Images/_38489WhatsApp Image 2023-06-18 at 12.53.38 PM.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\_38489WhatsApp Image 2023-06-18 at 12.53.38 PM.jpeg"
     },
     {
       "Identity": "C:\\Users\\ENG.KINGSLEY\\Desktop\\LMS_Project\\LMS_Project\\wwwroot\\Images\\_43505evidence.JPG",

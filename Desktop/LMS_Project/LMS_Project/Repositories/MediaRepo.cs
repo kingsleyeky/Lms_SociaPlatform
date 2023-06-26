@@ -61,14 +61,14 @@ namespace LMS_Project.Repositories
                return res;
         }
 
-        public async Task<ServiceResponse> Edit(PostMediaDTO account)
+        public async Task<ServiceResponse> Edit(PostMediaDTO mediaDTO)
         {
-            var update = await _dbContext.PostMedias.Where(x => x.Id == account.Id).FirstOrDefaultAsync();
+            var update = await _dbContext.PostMedias.Where(x => x.Id == mediaDTO.Id).FirstOrDefaultAsync();
             if (update != null)
             {
-                //string name = account.Name + "." + account.Name;
-
-                update.Content = account.Content;
+                update.VideoLink = mediaDTO.VideoLink;
+                update.ScheduledTime = DateTime.Today;
+                update.Content = mediaDTO.Content;
                 _dbContext.Entry(update).State = EntityState.Modified;
                 int result = await _dbContext.SaveChangesAsync();
                 if (result > 0)

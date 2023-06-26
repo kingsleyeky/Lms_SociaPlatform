@@ -2,11 +2,23 @@
 @model LMS_Project.ViewModel.PostMediaDTO
 @{
     ViewData["Title"] = "Create"; 
-    Layout = "_DashBoardLayout";
-}
+    Layout = "_DashBoardLayout"; 
+    var min = DateTime.Now.ToString("yyyy-MM-dd");
+} 
+
+@*@{
+
+    var min = DateTime.Now.ToString("yyyy-MM-dd");
+}*@
 
 <form asp-controller="Media" asp-action="CreateContent" method="post" enctype="multipart/form-data">
 
+    <div id="Title">
+        <label>Title</label>
+        <div class="form-group">
+            <input asp-for="Title" id="Title" name="Title" id="Title" class="form-control grey" type="text"  placeholder="Title" />
+        </div>
+    </div>
 
     <div>
      <label>Content</label>
@@ -14,7 +26,6 @@
                                
     <div style="display: flex; justify-content: flex-end" id="Content"></div>
    </div> 
-
 
     <div id="VideoLink">
      <label>Video Link</label>
@@ -31,30 +42,16 @@
         </div>
 
     </div>
-
+    
     <div id="Schedule Time">
         <label>Schedule Time</label>
         <div class="form-group">
-            <input name="ScheduledTime" asp-for="ScheduledTime" name="ScheduleTime" id="ScheduleTime" type="date" asp-format="{0:yyyy-MM-dd}" class="rounded" placeholder="Schedule Time" />
+            <input name="ScheduledTime" asp-for="ScheduledTime"   min="@min"  id="ScheduleTime" type="date"  class="rounded" placeholder="Schedule Time" />
         </div>
     </div>
    
-   @* <div id="Start Date">
-        <label>Start Date</label>
-        <div class="form-group">
-            <input name="StartDate" asp-for="StartDate" name="StartDate" id="StartDate" type="date" asp-format="{0:yyyy-MM-dd}" class="rounded" placeholder="Start Date" />
-        </div>
-    </div>
-    <div id="End Date">
-        <label>End Date</label>
-        <div class="form-group">
-            <input name="EndDate" asp-for="EndDate" name="EndDate" id="EndDate" type="date" asp-format="{0:yyyy-MM-dd}" class="rounded" placeholder="End Date" />
-        </div>
-    </div>*@
-
-
     <div> 
-
+        <label>Platform</label>
 
         <select asp-for="PlatformIds" name="PlatformIds" class="select" id="Id" multiple data-mdb-placeholder="Please Select" multiple">
              
@@ -125,7 +122,33 @@
 
 <script>
     new MultiSelectTag('Id')  // id
-</script>
+</script> 
+
+
+@*<script>
+    $(function () {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+
+        // or instead:
+        // var maxDate = dtToday.toISOString().substr(0, 10);
+
+        alert(maxDate);
+        $('#txtDate').attr('min', maxDate);
+    });
+</script>*@
+
+
+
 @*<script type="text/javascript">
     $(document).ready(function() {
         $('#example-with-maxHeight').multiselect({
