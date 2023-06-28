@@ -60,8 +60,14 @@ namespace LMS_Project.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int? Id)
+        public async Task <IActionResult> Edit(int? Id)
         {
+
+            var existingData = await _media.EditByID(Id); 
+            if (existingData != null)
+            {
+                return View(existingData);
+            }
             return View();
         }
 

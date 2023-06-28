@@ -15,7 +15,8 @@ builder.Services.AddScoped<ISettings, SettingsRepo>();
 builder.Services.AddScoped<IHome, HomeRepo>(); 
 builder.Services.AddScoped<IAccount,AccountRepo>();
 builder.Services.AddScoped<IMedia,MediaRepo>();
-builder.Services.AddScoped<IDocUpload,DocUpload>();
+builder.Services.AddScoped<IDocUpload,DocUpload>(); 
+builder.Services.AddScoped<ISchedule,ScheduleRepo>(); 
 builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
 builder.Services.AddHttpContextAccessor();
 

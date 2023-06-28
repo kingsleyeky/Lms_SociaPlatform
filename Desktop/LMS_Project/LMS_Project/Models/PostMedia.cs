@@ -24,6 +24,8 @@ namespace LMS_Project.Models
 
         [Required]
         public DateTime? ScheduledTime { get; set; }
+
        
+
     }
 }

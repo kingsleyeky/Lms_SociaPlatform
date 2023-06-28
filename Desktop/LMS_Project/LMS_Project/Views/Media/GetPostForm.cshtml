@@ -1,10 +1,10 @@
-﻿@using LMS_Project.ViewModel;
+﻿﻿@using LMS_Project.ViewModel;
 @model LMS_Project.ViewModel.PostMediaDTO
 @{
-    ViewData["Title"] = "Create"; 
-    Layout = "_DashBoardLayout"; 
+    ViewData["Title"] = "Create";
+    Layout = "_DashBoardLayout";
     var min = DateTime.Now.ToString("yyyy-MM-dd");
-} 
+}
 
 @*@{
 
@@ -16,48 +16,48 @@
     <div id="Title">
         <label>Title</label>
         <div class="form-group">
-            <input asp-for="Title" id="Title" name="Title" id="Title" class="form-control grey" type="text"  placeholder="Title" />
+            <input asp-for="Title" id="Title" name="Title" id="Title" class="form-control grey" type="text" placeholder="Title" />
         </div>
     </div>
 
     <div>
-     <label>Content</label>
-     <textarea id="content" name="Content" maxlength="1000" asp-for="Content" placeholder="Content" rows="5" class="w-100 grey"></textarea>
-                               
-    <div style="display: flex; justify-content: flex-end" id="Content"></div>
-   </div> 
+        <label>Content</label>
+        <textarea id="content" name="Content" maxlength="1000" asp-for="Content" placeholder="Content" rows="5" class="w-100 grey"></textarea>
+
+        <div style="display: flex; justify-content: flex-end" id="Content"></div>
+    </div>
 
     <div id="VideoLink">
-     <label>Video Link</label>
-     <div class="form-group">
+        <label>Video Link</label>
+        <div class="form-group">
             <input asp-for="VideoLink" id="VideoLink" name="VideoLink" id="VideoLink" class="form-control grey" type="text" value="@ViewBag.videoLink" placeholder="Video Link" />
-      </div>
-     </div>
+        </div>
+    </div>
 
     <div class="d-flex justify-content-between ">
         <div class="form-group ">
             <label>Upload Image</label>
             <input required name="image" class="form-control grey upload-button " type="file" accept="image/*" />
-           
+
         </div>
 
     </div>
-    
+
     <div id="Schedule Time">
         <label>Schedule Time</label>
         <div class="form-group">
-            <input name="ScheduledTime" asp-for="ScheduledTime"   min="@min"  id="ScheduleTime" type="date"  class="rounded" placeholder="Schedule Time" />
+            <input name="ScheduledTime" asp-for="ScheduledTime" min="@min" id="ScheduleTime" type="date" class="rounded" placeholder="Schedule Time" />
         </div>
     </div>
-   
-    <div> 
+
+    <div>
         <label>Platform</label>
 
         <select asp-for="PlatformIds" name="PlatformIds" class="select" id="Id" multiple data-mdb-placeholder="Please Select" multiple">
-             
+
 
             <option value="" selected>Choose Your Option</option>
-            @if(ViewData["Platforms"] != null)
+            @if (ViewData["Platforms"] != null)
             {
                 foreach (var platform in (ViewData["Platforms"] as List<Tbl_Platform>))
                 {
@@ -66,124 +66,22 @@
                     </option>
                 }
             }
-                               
-                             @*<option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
-                            <option value="5">Five</option>*@
-                </select>
-       
-         </div>
 
-
-
-
-    @*<div class="d-flex">
-        <div>
-        <input id="checkbox" type="checkbox" value="Facebook" asp-for="Facebook" class="form-check-input">
-        <label class="form-check-label ml-2" for="contract-check">
-            <span id="agreement" data-toggle="modal" data-target="#contract" class="font-weight-bold" style="color: #2F80ED !important;">Facebook</span>
-        </label>
-
-      </div>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-      <div>
-        <input id="contract-check" type="checkbox" value="Instagram" asp-for="Instagram" class="form-check-input">
-        <label class="form-check-label ml-2" for="contract-check">
-            <span id="agreement" data-toggle="modal" data-target="#contract" class="font-weight-bold" style="color: #2F80ED !important;">Instagram</span>
-        </label>
-     </div>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-
-        <div>
-        <input id="contract-check" type="checkbox" value="Linkdein"  asp-for="Linkdein" class="form-check-input" >
-        <label class="form-check-label ml-2" for="contract-check">
-        <span id="agreement" data-toggle="modal" data-target="#contract" class="font-weight-bold" style="color: #2F80ED !important;">Linkdein</span>
-        </label> 
+          
+        </select>
 
     </div>
-  </div>*@
-    
-    
-        <div>
-        <button type="submit" class="btn btn-primary">Post Now</button>
-        </div>
 
-    
+    <div>
+        <button type="submit" class="btn btn-primary">Post Now</button>
+    </div>
+
+
 
 </form>
 
 <script>
     new MultiSelectTag('Id')  // id
-</script> 
-
-
-@*<script>
-    $(function () {
-        var dtToday = new Date();
-
-        var month = dtToday.getMonth() + 1;
-        var day = dtToday.getDate();
-        var year = dtToday.getFullYear();
-        if (month < 10)
-            month = '0' + month.toString();
-        if (day < 10)
-            day = '0' + day.toString();
-
-        var maxDate = year + '-' + month + '-' + day;
-
-        // or instead:
-        // var maxDate = dtToday.toISOString().substr(0, 10);
-
-        alert(maxDate);
-        $('#txtDate').attr('min', maxDate);
-    });
-</script>*@
-
-
-
-@*<script type="text/javascript">
-    $(document).ready(function() {
-        $('#example-with-maxHeight').multiselect({
-            maxHeight: 200
-        });
-    });
-</script>*@
-
-
-
-@*<script>
-     $(document).ready(function () {
-           $("#btn").click(function () {
-
-        var QuerySearch = $('#NewSearchBar').val();
-        var QuerySearch = $('#NewSearchBar').val();
-        var QuerySearch = $('#NewSearchBar').val();
-            var checkedValue = $('.messageCheckbox:checked').val();
-
-         $.ajax({    
-                  type: "POST",    
-                  url: "Index",    
-                  data: dto,
-                  success: OnSuccess
-                  //error : OnError
-
-               });
-
-                             function OnSuccess(response){
-                                    $('#user-table').html(response);
-                            };
-    
-                            )};
-
-     )};
-
 </script>
-*@
+
+

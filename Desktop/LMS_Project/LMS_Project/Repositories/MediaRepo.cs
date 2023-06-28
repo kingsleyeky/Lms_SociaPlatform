@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace LMS_Project.Repositories
 {
@@ -33,8 +34,9 @@ namespace LMS_Project.Repositories
                     var mediaData = new PostMedia
                     {
                         Content = mediaDTO.Content,
+                        Title= mediaDTO.Title,
                         ImagePath = imageResponse.Data.ToString(),
-                        ScheduledTime = DateTime.Today,
+                        ScheduledTime = mediaDTO.ScheduledTime,
                         VideoLink = mediaDTO.VideoLink,
                         UserEmail = Email,
                         CreatedDate = DateTime.Today,
@@ -65,7 +67,8 @@ namespace LMS_Project.Repositories
         {
             var update = await _dbContext.PostMedias.Where(x => x.Id == mediaDTO.Id).FirstOrDefaultAsync();
             if (update != null)
-            {
+            { 
+
                 update.VideoLink = mediaDTO.VideoLink;
                 update.ScheduledTime = DateTime.Today;
                 update.Content = mediaDTO.Content;
@@ -93,6 +96,36 @@ namespace LMS_Project.Repositories
                 res.Data = null;
                 return res;
             }
+        } 
+
+        public async Task<PostMedia> EditByID(int? Id)
+        {
+            // Retrieve the existing data based on the provided ID
+            var existingData =  await _dbContext.PostMedias.Where(x => x.Id == Id).FirstOrDefaultAsync();
+
+            // Check if the data exists
+            if (existingData == null)
+            {
+                return null;
+            }
+
+            // Create a view model or map the existing data to a view model
+            var viewModel = new PostMedia
+            {
+                // Populate the view model properties with the existing data
+                Content = existingData.Content,
+                Title = existingData.Title,
+                VideoLink= existingData.VideoLink,
+                ScheduledTime = existingData.ScheduledTime,
+               // PostPlatforms = existingData.PostPlatforms?
+                      //  .Select(platformId => new PostPlatform { PlatformId = Id.Value })?
+                      //  .ToList(),  
+                
+            };
+
+            
+            return viewModel;
+
         }
 
 
@@ -137,23 +170,6 @@ namespace LMS_Project.Repositories
         public async Task<List<PostMedia>> Index()
         {
             var data = await _dbContext.PostMedias.Include(x=>x.PostPlatforms).ThenInclude(x=>x.Platform).ToListAsync();
-
-
-            //var data = await (from s in _dbContext.PostMedias
-            //                  join c in _dbContext.Accounts on s.UserEmail equals c.UserEmail
-            //                  where s.UserEmail != null
-            //                  select new AccountMediaDTO
-            //                  {
-            //                      Name= c.Name,
-            //                      Id = s.Id,
-            //                  }).AsNoTracking().ToListAsync();
-
-
-
-            //string jsonPage = JsonConvert.SerializeObject(data);
-            //List<PostMediaDTO> posts;
-
-            //posts = JsonConvert.DeserializeObject<List<PostMediaDTO>>(jsonPage);
 
 
             return data;

@@ -2,34 +2,53 @@
 using LMS_Project.Models;
 using LMS_Project.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LMS_Project.Repositories
 {
     public class ScheduleRepo:ISchedule
     {
 
-        public string today = DateTime.Today.ToString();
-
-        public ApplicationDbContext _Context { get; set; }
-       
-      
-        public EventShow Events { get; set; }
-
-        public JsonResult result { get; set; }
+        public ApplicationDbContext _dbContext { get; set; }
+        ServiceResponse res = new ServiceResponse();
 
         public ScheduleRepo(ApplicationDbContext context)
 
         {
-            _Context = context;
+            _dbContext = context;
 
         }
-        ////public void OnGet()
-        ////{
-        ////    ViewData["events"] = new[]
-        ////    {
-        ////        new EventShow { Id = 1, Title = "Video for Marisa", StartDate = "2023-06-14"},
-        ////        new EventShow { Id = 2, Title = "Preparation", StartDate = "2023-06-12"},
-        ////    };
-        ////}
+        public async Task<ServiceResponse> Edit(EventShow eventShow)
+        {
+            var update = await _dbContext.PostMedias.Where(x => x.Title == eventShow.Title).FirstOrDefaultAsync();
+            if (update != null)
+            {
+               
+                update.Content = eventShow.Content;
+                _dbContext.Entry(update).State = EntityState.Modified;
+                int result = await _dbContext.SaveChangesAsync();
+                if (result > 0)
+                {
+
+                    res.message = "updated successfully";
+                    res.Data = update;
+                    res.success = true;
+                    return res;
+                }
+
+                res.message = "update Failed ";
+                res.Data = update;
+                res.success = false;
+                return res;
+            }
+
+            else
+            {
+                res.success = false;
+                res.message = "Does not exist";
+                res.Data = null;
+                return res;
+            }
+        }
     }
 }

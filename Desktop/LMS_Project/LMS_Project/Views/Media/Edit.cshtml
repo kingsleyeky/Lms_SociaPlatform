@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
     Layout = "_DashBoardLayout"; 
 
-    //var routeId = ViewContext.RouteData.Values["Id"].ToString().ToLower();
+   var min = DateTime.Now.ToString("yyyy-MM-dd");
 }
 
 
@@ -16,6 +16,13 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden"  asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
 
             <div class="form-group">
                 <label asp-for="Content" class="control-label">Content</label>
@@ -34,7 +41,7 @@
             <div class="form-group">
                 <label asp-for="ScheduledTime" class="control-label">Schedule Time</label>
                     <div class="form-group">
-              <input name="ScheduledTime" asp-for="ScheduledTime" name="ScheduleTime" id="ScheduleTime" type="date" asp-format="{0:yyyy-MM-dd}" class="rounded" placeholder="Schedule Time" />
+                    <input name="ScheduledTime" asp-for="ScheduledTime" min="@min" id="ScheduleTime" type="date" class="rounded" placeholder="Schedule Time" />
                </div>
                 <span asp-validation-for="ScheduledTime" class="text-danger"></span>
             </div>

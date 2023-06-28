@@ -10,5 +10,6 @@ namespace LMS_Project.Interface
         Task<List<PostMedia>> Index();
         Task<ServiceResponse> DeleteById(int Id);
         Task<List<Tbl_Platform>> GetPlatform();
+        Task<PostMedia> EditByID(int? Id);
     }
 }
